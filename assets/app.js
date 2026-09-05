@@ -1511,7 +1511,23 @@
 
   window.addEventListener("hashchange", () => route());
 
-  byId("intro")?.remove();
+  /* ------------------------------------------------------------------- intro */
+  // The original site's entrance, restored for the Garden review. Custom cursors
+  // stay removed: the brief bans them, and only the entrance was asked for.
+  // Session key is namespaced to the demo so it cannot collide with the original.
+  const intro = byId("intro");
+  if (intro) {
+    if (sessionStorage.getItem("kodia-demo-intro") === "seen"
+        || window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+      intro.remove();
+    } else {
+      sessionStorage.setItem("kodia-demo-intro", "seen");
+      setTimeout(() => {
+        intro.classList.add("done");
+        setTimeout(() => intro.remove(), 900);
+      }, 1900);
+    }
+  }
   byId("cursor")?.remove();
   byId("cursor-ring")?.remove();
 

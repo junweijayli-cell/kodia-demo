@@ -26,7 +26,12 @@ Readiness: a resolved invitation to discuss the selected pieces, connected to th
 
 Peak sentence: “The terrace opened up and the furniture seemed to come out of the page.”
 Tell-someone sentence: “It's the site where you step through a frame into an outdoor room.”
-Silence: the short introductory statement is intentionally calm. No empty viewport or loading pause is authored.
+Silence: the short introductory statement is intentionally calm. No empty viewport is authored.
+
+**Amended 6 September 2026 at the client's request:** the original site's entrance overlay is
+restored on this demo. It holds for 1.9s, then fades over 0.8s, shows once per session, and is
+skipped entirely under `prefers-reduced-motion`. This supersedes the "no loading pause" note
+above. Custom cursors remain banned and remain removed.
 
 ## Grammar and fingerprint
 
