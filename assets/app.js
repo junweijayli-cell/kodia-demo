@@ -60,7 +60,7 @@
       selection: "Selection", getQuote: "Get a Quote", chat: "Chat", chatAria: "Chat on WhatsApp",
       crumbHome: "Home",
 
-      heroTitle: "Built for<em>outdoor lifestyle.</em>",
+      heroTitle: "Built for <em>outdoor lifestyle.</em>",
       heroBody: "500+ models of rope-weave, cast-aluminium and teak — sofas, dining, shade and outdoor kitchens — manufactured in Foshan, shipped to 40+ countries.",
       statModels: "Models", statCategories: "Categories", statCountries: "Countries",
       exploreCollections: "Explore Collections", requestCatalog: "Request the 2026 Catalog",
@@ -86,7 +86,7 @@
 
       catalogBandTitle: "The 2026 catalog. 140 pages, 500+ models.",
       catalogBandBody: "Full product line with model numbers, dimensions and finishes. Tell us your market and we'll send the sections that matter to you.",
-      photoQuoteTitle: "Send us a photo.<em>We'll quote it.</em>",
+      photoQuoteTitle: "Send us a photo. <em>We'll quote it.</em>",
       photoQuoteBody: "A catalog page, a Pinterest screenshot, a competitor's product — send what you have and our team will come back within 24 hours with specification and pricing.",
       startInquiry: "Start your inquiry",
 
@@ -653,8 +653,8 @@
   function applyStatic() {
     document.documentElement.lang = state.lang === "zh" ? "zh-CN" : "en";
     document.title = state.lang === "zh"
-      ? "KORDIA | 自在户外。设计演示"
-      : "KORDIA | Life, better outside. Design demo";
+      ? "KORDIA | 花园设计预览"
+      : "KORDIA | Garden review";
     document.querySelectorAll("[data-i18n]").forEach((n) => { n.textContent = t(n.dataset.i18n); });
     document.querySelectorAll("[data-i18n-html]").forEach((n) => { n.innerHTML = t(n.dataset.i18nHtml); });
     document.querySelectorAll("[data-i18n-placeholder]").forEach((n) => { n.placeholder = t(n.dataset.i18nPlaceholder); });
@@ -706,13 +706,7 @@
       const cover = collectionCover(c.slug);
       const v = atLeast(cover, 800);
       const wide = meta.span === "span-12";
-      const coverSizes = meta.span === "span-12"
-        ? "calc(min(1440px, 100vw - 64px))"
-        : meta.span === "span-6"
-          ? "(min-width: 981px) calc((min(1440px, 100vw) - 88px) / 2), (min-width: 621px) calc((100vw - 72px) / 2), calc(100vw - 36px)"
-        : meta.span === "span-8"
-          ? "(min-width: 981px) 950px, (min-width: 621px) 50vw, 100vw"
-          : "(min-width: 981px) 950px, (min-width: 621px) 100vw, 200vw";
+      const coverSizes = "(min-width: 701px) 29vw, 45vw";
       return `
         <button class="coll-card ${meta.span}" type="button" data-open-collection="${c.slug}">
           <span class="frame ${meta.ar}" style="display:block">

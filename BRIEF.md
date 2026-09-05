@@ -1,5 +1,7 @@
 # KORDIA: the outdoor room
 
+**Current review, 5 September 2026:** The approved Garden composition and the original homepage content now supersede the initial exploration below. See [Garden review](docs/GARDEN-REVIEW.md) for the current brief, motion sequence and the requested poolside image. The original website remains isolated; this revision is authorized for deployment to `kodia-demo` only.
+
 Self-authored under explicit creative delegation. The user asked for professional web and graphic design judgment, a more three-dimensional scroll experience inspired by Fora, and an independently deployed demo. The original repository and domain must remain unchanged.
 
 ## Evidence and authored decisions
