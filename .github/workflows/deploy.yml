@@ -1,0 +1,68 @@
+name: Publish KORDIA demo
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  pages: write
+  id-token: write
+
+concurrency:
+  group: kodia-demo-pages
+  cancel-in-progress: false
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - uses: actions/checkout@v4
+      - name: Expand reviewed source bundle on first publication
+        if: ${{ hashFiles('_demo-source.b64') != '' }}
+        run: |
+          base64 --decode _demo-source.b64 > "$RUNNER_TEMP/demo.zip"
+          unzip -o "$RUNNER_TEMP/demo.zip"
+          printf '\n.kd-hero-copy[data-sc-copy]{opacity:1;pointer-events:auto}.kd-terrace-title[data-sc-copy],.kd-object-label[data-sc-copy]{pointer-events:auto}\n' >> assets/demo.css
+      - name: Copy the original public image library into this demo
+        if: ${{ hashFiles('assets/images/catalog/*.webp') == '' }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          test "$GITHUB_REPOSITORY" = 'junweijayli-cell/kodia-demo'
+          reference="$RUNNER_TEMP/kordia-reference"
+          git init "$reference"
+          git -C "$reference" remote add origin https://github.com/junweijayli-cell/kordia-outdoor-furniture.git
+          git -C "$reference" fetch --depth=1 origin 319668987aa44b232e8ab4d730fdc76baad638cb
+          git -C "$reference" checkout FETCH_HEAD -- assets/images assets/fonts assets/catalog-data.js assets/styles.css
+          mkdir -p assets/images assets/fonts
+          cp -a "$reference/assets/images/." assets/images/
+          cp -a "$reference/assets/fonts/." assets/fonts/
+          cp "$reference/assets/catalog-data.js" assets/catalog-data.js
+          cp "$reference/assets/styles.css" assets/styles.css
+          test ! -e CNAME
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add index.html assets README.md BRIEF.md VERIFICATION.md docs scripts .gitignore .nojekyll
+          if test -f _demo-source.b64; then git rm -- _demo-source.b64; fi
+          git commit -m 'Publish reviewed demo source and copy the unchanged image library'
+          git push origin HEAD:main
+      - name: Validate static source
+        run: |
+          test ! -e CNAME
+          test -f index.html
+          test -f assets/images/demo/courtyard-clean.webp
+          node --check assets/app.js
+          node --check assets/demo.js
+      - uses: actions/configure-pages@v5
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: .
+      - name: Deploy
+        id: deployment
+        uses: actions/deploy-pages@v4
+
