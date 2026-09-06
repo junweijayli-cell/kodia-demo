@@ -26,9 +26,11 @@ jobs:
           test -f assets/images/demo/garden.webp
           test -f assets/images/demo/garden-foreground.png
           test -f assets/garden-motion.css
+          test -f assets/panel-motion.css
           test -f assets/images/projects/proj-resort-pool-1600.webp
           node --check assets/app.js
           node --check assets/garden-review.js
+          node --check assets/panel-motion.js
       - uses: actions/configure-pages@v5
       - uses: actions/upload-pages-artifact@v3
         with:

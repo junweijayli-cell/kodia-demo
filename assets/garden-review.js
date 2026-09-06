@@ -190,7 +190,7 @@
   let hoveredCard;
   document.addEventListener('pointermove', event => {
     if (!active || !finePointer.matches) return;
-    const card = event.target.closest('.coll-card, .p-card, .kr-project-grid article');
+    const card = event.target.closest('.p-card');
     if (hoveredCard && hoveredCard !== card) { hoveredCard.style.removeProperty('--kr-tilt-x'); hoveredCard.style.removeProperty('--kr-tilt-y'); }
     hoveredCard = card; if (!card) return;
     const r = card.getBoundingClientRect();

@@ -11,6 +11,7 @@ This repository is separate from the original KORDIA website. It has no producti
 - The selected Garden image with a sky headline, independently moving furniture and foreground plants, gentle wind and a rotating scroll emblem.
 - A curved handoff into a scroll-linked horizontal journey through all six collections on roomy desktop viewports; smaller screens and reduced-motion visitors retain the full grid.
 - Masked heading entrances, alternating section reveals, image parallax, pointer-responsive cards and animated page entrances. Native scrolling, keyboard access and a persistent motion pause control.
+- Below the hero, 25 panels use spring-eased perspective, independently moving images and captions, reflected light and soft shadows. Text and setting rows have gentler movement; touch and reduced-motion visitors get stable panels.
 - Original sequence: programme, Why KORDIA, materials, settings, projects, catalogue request and photo quotation.
 - The requested poolside photograph beside “Start from the space, not the product.” Other images remain inside their existing content sections.
 - Original bilingual catalogue, filtering, product detail, saved selection and enquiry wizard.

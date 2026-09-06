@@ -27,6 +27,17 @@ Browser interaction checks used the connected Chrome browser on the local previe
 
 System reduced-motion and no-JavaScript branches were reviewed in source; the in-page pause path was exercised in Chrome. Physical iPhone/Android touch behavior and Safari remain device-review items.
 
+## Cursor-panel refinement
+
+The follow-up reference is [Nick Stepuk's panel-motion post](https://x.com/stfnco/status/2075586686956810471). Its floating perspective cards and separated visual layers informed the interaction; no reference imagery or code was copied.
+
+- Added `panel-motion.js` and `panel-motion.css` for 25 home panels: six collections, four capability points, three materials, six settings, the pool scene, three projects, and the two catalogue panels. The hero is excluded; its markup, imagery and existing pointer/scroll choreography are unchanged.
+- Image panels tilt up to 8 degrees and lift 7px with a damped spring. Images move opposite the cursor while captions move forward at a separate depth. Reflected light and directional shadows reinforce the plane. Large scenes, prose and setting rows use smaller ranges.
+- Entrance motion uses CSS `translate`, leaving `transform` available for perspective. Cursor image movement also composes with the existing scroll parallax. No wrappers, copy changes, navigation interception or new dependencies were added.
+- Animation frames run only while a panel is moving and stop when it settles. Leaving, scrolling, keyboard Tab, page changes, resizing and visibility changes release or reset the interaction. Pause and system reduced motion disable it; coarse/touch pointers do not start it. Dynamic grids are registered again after language changes.
+
+Follow-up browser checks in Chrome covered 1920×889, 1440×1000, 390×844 and 320×740. Observed actual perspective transforms, opposite image/caption movement, continued image scroll parallax, and return to a clean neutral state. Verified Pause clears panel styles, the hero contains zero registered panels, all 25 panels survive Chinese translation, setting navigation works, and project images still open and close their lightbox. Chinese panels stayed inside the viewport at 320px with motion paused. Checked desktop collection navigation and keyboard focus. No browser console errors. System reduced motion and coarse-pointer branches were reviewed in source; physical touch hardware and Safari were not tested.
+
 ## Asset provenance
 
 The selected `assets/images/demo/garden.webp`, original logo, catalogue photography, fonts and poolside setting photograph are retained. References informed motion and layout, without copying their imagery or source code.
