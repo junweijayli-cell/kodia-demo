@@ -1175,7 +1175,10 @@
     if (a === "p") return { screen: "product", productId: b };
     // A setting is a saved view over the same catalogue, not a separate data
     // set — it resolves to the collections that feed it.
-    if (a === "set") return { screen: "collection", setting: b || "all" };
+    if (a === "set") {
+      const setting = (catalog.settings || []).find(s => s.slug === b);
+      return { screen: "collection", collection: setting?.from?.[0] || "all" };
+    }
     return { screen: SCREENS.includes(a) ? a : "home" };
   }
 

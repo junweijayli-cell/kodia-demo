@@ -2,7 +2,7 @@ const { chromium } = require('playwright-core');
 const fs = require('node:fs');
 const path = require('node:path');
 const assert = require('node:assert/strict');
-const base = process.env.DEMO_URL || 'http://127.0.0.1:4503/';
+const base = process.env.DEMO_URL || 'http://127.0.0.1:4500/';
 const out = process.env.QA_OUTPUT || 'lab/garden-review';
 fs.mkdirSync(out, { recursive: true });
 (async () => {
@@ -21,10 +21,12 @@ fs.mkdirSync(out, { recursive: true });
   async function ready(p) {
     await p.waitForSelector('#screen-home:not([hidden])');
     await p.evaluate(() => document.fonts.ready);
+    await p.locator('#intro').waitFor({state:'hidden'});
   }
   async function shoot(p, name, y) {
     await p.evaluate(y => scrollTo(0, y), y);
     await p.waitForTimeout(180);
+    await p.evaluate(() => Promise.all(document.getAnimations().filter(a => a.effect?.getTiming().iterations !== Infinity).map(a => a.finished.catch(() => {}))));
     await p.evaluate(async () => {
       const visible = [...document.images].filter(i => { const r = i.getBoundingClientRect(); return r.width && r.height && r.bottom > 0 && r.top < innerHeight; });
       await Promise.all(visible.map(i => i.decode().catch(() => {})));
@@ -53,17 +55,25 @@ fs.mkdirSync(out, { recursive: true });
         overflow: document.documentElement.scrollWidth > innerWidth + 1,
         broken: [...document.querySelectorAll('#screen-home img')].filter(i => getComputedStyle(i).display !== 'none' && i.complete && !i.naturalWidth).map(i=>i.getAttribute('src')),
         fonts: {urbanist:document.fonts.check('400 16px Urbanist'),stardom:document.fonts.check('400 64px Stardom')},
-        textOverflow: [...document.querySelectorAll('#screen-home h1,#screen-home h2,#screen-home h3,#screen-home p,#screen-home figcaption')].filter(n=>{const r=n.getBoundingClientRect();return r.width && (r.left < -1 || r.right > innerWidth+1)}).map(n=>n.textContent)
+        textOverflow: [...document.querySelectorAll('#screen-home h1,#screen-home h2,#screen-home h3,#screen-home p,#screen-home figcaption')].filter(n=>{if(n.closest('.kr-horizontal .kr-collections'))return false;const r=n.getBoundingClientRect();return r.width && (r.left < -1 || r.right > innerWidth+1)}).map(n=>n.textContent)
       }));
       fs.writeFileSync(path.join(out,name+'-layout.json'),JSON.stringify(check,null,2));
       assert.equal(check.overflow,false,name+' overflow'); assert.deepEqual(check.textOverflow,[],name+' text overflow'); assert.deepEqual(check.broken,[]); assert.ok(check.fonts.urbanist&&check.fonts.stardom); assert.deepEqual(errors,[]);
+      if(await p.locator('.kr-horizontal').count()) {
+        const range=await p.locator('.kr-programme').evaluate(el=>({start:el.getBoundingClientRect().top+scrollY-document.querySelector('.site-header').offsetHeight,travel:el.offsetHeight-el.querySelector('.kr-programme-stage').offsetHeight}));
+        for(const progress of [0,.5,1]) await shoot(p,name+'-collections-'+progress,range.start+range.travel*progress);
+        const end=await p.locator('.kr-collection-window').evaluate(el=>({x:el.scrollLeft,max:el.scrollWidth-el.clientWidth}));
+        assert.ok(Math.abs(end.x-end.max)<3,'All six collections are reachable');
+        await p.locator('.kr-motion-toggle').click();assert.equal(await p.locator('.kr-horizontal').count(),0);
+        await p.locator('.kr-motion-toggle').click();
+      }
       if(viewport.width<1180){await p.locator('#menu-toggle').click();assert.equal(await p.locator('#menu-toggle').getAttribute('aria-expanded'),'true');await p.locator('#mobile-nav [data-go="collections"]').click();await p.waitForSelector('#screen-collections:not([hidden])');assert.equal(await p.locator('#menu-toggle').getAttribute('aria-expanded'),'false');}
       results.push(name+': fonts, images, full content, no horizontal text overflow, section screenshots and navigation pass.');
       await c.close();
     }
     const c = await context(); const p = await c.newPage(); const errors=[]; p.on('pageerror',e=>errors.push(e.message));
     await p.goto(base); await ready(p);
-    await p.locator('#home-settings [data-open-setting]').first().click(); await p.waitForSelector('#screen-collection:not([hidden])'); assert.ok(await p.locator('#browse-grid [data-open-product]').count()>0);
+    await p.locator('#home-settings [data-open-setting]').first().click(); await p.waitForSelector('#screen-collection:not([hidden])'); assert.ok(await p.locator('#browse-grid [data-open-product]').count()>0); assert.equal(await p.locator('#browse-title').innerText(),'Sun & Leisure'); assert.equal(await p.locator('#browse-total').innerText(),'74');
     await p.goto(base+'#/home');await ready(p);await p.locator('#home-collections [data-open-collection="sofa-lounge"]').click();await p.waitForSelector('#screen-collection:not([hidden])');
     await p.locator('#browse-search').fill('zzzz-no-such-model');await p.waitForTimeout(250);assert.equal(await p.locator('#browse-grid [data-open-product]').count(),0);await p.locator('#browse-search').fill('');await p.waitForTimeout(250);
     await p.locator('#browse-grid [data-open-product]').first().click();await p.waitForSelector('#screen-product:not([hidden])');await p.locator('#pd-add').click();assert.equal(await p.locator('#sel-count').innerText(),'1');await p.reload();await p.waitForSelector('#screen-product:not([hidden])');assert.equal(await p.locator('#sel-count').innerText(),'1');

@@ -13,9 +13,10 @@
 
 <link rel="stylesheet" href="assets/styles.css?v=20260830-point-alignment">
 <link rel="stylesheet" href="assets/garden-review.css?v=20260906-intro">
+<link rel="stylesheet" href="assets/garden-motion.css?v=20260906-motion">
 </head>
 <body>
-<noscript><style>#screen-home[hidden]{display:block!important}.kr-hero{height:auto;min-height:0}.kr-hero-stage{position:relative;top:0}.kr-curve{display:none}</style><p style="padding:20px 5%;margin:0;background:#e8ebe1">Enable JavaScript to browse models and build a selection. You can also <a href="https://wa.me/8613450846180" target="_blank" rel="noopener">request the catalogue on WhatsApp</a>.</p></noscript>
+<noscript><style>#intro{display:none!important}#screen-home[hidden]{display:block!important}.kr-hero{height:auto;min-height:0}.kr-hero-stage{position:relative;top:0}.kr-curve{display:none}</style><p style="padding:20px 5%;margin:0;background:#e8ebe1">Enable JavaScript to browse models and build a selection. You can also <a href="https://wa.me/8613450846180" target="_blank" rel="noopener">request the catalogue on WhatsApp</a>.</p></noscript>
 
 <a class="skip-link" href="#main" data-i18n="skip">Skip to content</a>
 
@@ -91,8 +92,13 @@
   <section class="kr-hero" aria-labelledby="garden-title">
     <div class="kr-hero-stage">
       <img class="kr-garden-photo" src="assets/images/demo/garden.webp" width="1672" height="941" fetchpriority="high" alt="Teak outdoor lounge furniture in the selected garden composition">
+      <div class="kr-furniture-layer" aria-hidden="true"><img src="assets/images/demo/garden.webp" width="1672" height="941" alt=""></div>
+      <div class="kr-botanical kr-botanical-left" aria-hidden="true"></div>
+      <div class="kr-botanical kr-botanical-right" aria-hidden="true"></div>
       <div class="kr-hero-copy">
+        <span class="kr-hero-eyebrow" data-en="KORDIA · OUTDOOR LIVING" data-zh="KORDIA · 户外生活">KORDIA · OUTDOOR LIVING</span>
         <h1 id="garden-title" data-i18n-html="heroTitle">Built for <em>outdoor lifestyle.</em></h1>
+        <div class="kr-hero-details">
         <p data-i18n="heroBody">500+ models of rope-weave, cast-aluminium and teak, sofas, dining, shade and outdoor kitchens, manufactured in Foshan, shipped to 40+ countries.</p>
         <div class="kr-stats"><span><b>500+</b> <span data-i18n="statModels">Models</span></span><span><b id="stat-categories">22</b> <span data-i18n="statCategories">Categories</span></span><span><b>40+</b> <span data-i18n="statCountries">Countries</span></span></div>
         <div class="kr-actions">
@@ -100,12 +106,18 @@
           <a class="kr-button kr-button-paper" href="https://wa.me/8613450846180" data-wa="catalogRequestMessage" target="_blank" rel="noopener" data-i18n="requestCatalog">Request the 2026 Catalog</a>
           <a class="kr-hero-chat" href="https://wa.me/8613450846180" data-wa="heroChatMessage" target="_blank" rel="noopener" data-i18n="whatsappChat">WhatsApp Chat</a>
         </div>
+        </div>
       </div>
+      <button class="kr-orbit" type="button" data-scroll-programme aria-label="Discover the six collections">
+        <svg viewBox="0 0 120 120" aria-hidden="true"><defs><path id="kr-orbit-path" d="M60,60 m-45,0 a45,45 0 1,1 90,0 a45,45 0 1,1 -90,0"/></defs><text><textPath href="#kr-orbit-path" textLength="282">KORDIA · OUTDOOR LIVING · </textPath></text></svg>
+        <span aria-hidden="true">↓</span>
+      </button>
+      <div class="kr-hero-footnote" aria-hidden="true"><span data-en="A slower kind of living." data-zh="让生活慢下来。">A slower kind of living.</span><span>01 — 06</span></div>
     </div>
   </section>
   <section class="kr-programme kr-section" aria-labelledby="programme-title">
     <div class="kr-curve" aria-hidden="true"></div>
-    <div class="kr-shell"><div class="kr-section-heading"><span class="kr-eyebrow" data-i18n="programmeKicker">The 2026 programme</span><h2 id="programme-title" data-i18n="programmeTitle">A complete outdoor programme, from one factory floor.</h2><p data-i18n="programmeBody">Six collections that furnish an entire terrace, seating, dining, shade, fire and landscape, so you consolidate a container instead of chasing six suppliers.</p></div><div class="kr-collections" id="home-collections"></div></div>
+    <div class="kr-programme-stage"><div class="kr-shell"><div class="kr-section-heading"><span class="kr-eyebrow" data-i18n="programmeKicker">The 2026 programme</span><h2 id="programme-title" data-i18n="programmeTitle">A complete outdoor programme, from one factory floor.</h2><p data-i18n="programmeBody">Six collections that furnish an entire terrace, seating, dining, shade, fire and landscape, so you consolidate a container instead of chasing six suppliers.</p></div><div class="kr-collection-window"><div class="kr-collections" id="home-collections"></div></div><div class="kr-collection-nav"><span class="kr-collection-index" aria-hidden="true">01 / 06</span><div class="kr-collection-progress" aria-hidden="true"><span></span></div><button type="button" data-collection-step="-1" aria-label="Previous collections">←</button><button type="button" data-collection-step="1" aria-label="Next collections">→</button><button class="kr-link" data-go="collections" type="button" data-en="View all collections ↗" data-zh="查看全部系列 ↗">View all collections ↗</button></div></div></div>
   </section>
   <section class="kr-why kr-section" aria-labelledby="why-title">
     <div class="kr-shell kr-why-grid">
@@ -755,9 +767,10 @@
 
 <div id="cursor" aria-hidden="true"></div>
 <div id="cursor-ring" aria-hidden="true"></div>
+<button class="kr-motion-toggle" type="button" aria-pressed="false" hidden><span aria-hidden="true">Ⅱ</span><span class="kr-motion-label">Pause motion</span></button>
 
 <script src="assets/catalog-data.js?v=20260822-type"></script>
-<script src="assets/app.js?v=20260906-intro"></script>
-<script src="assets/garden-review.js?v=20260905-garden"></script>
+<script src="assets/app.js?v=20260906-motion"></script>
+<script src="assets/garden-review.js?v=20260906-motion"></script>
 </body>
 </html>

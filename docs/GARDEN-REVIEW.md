@@ -1,5 +1,7 @@
 # Garden review, 5 September 2026
 
+Historical design record. The user's 6 September request for stronger layering, wind, horizontal transitions and idle motion supersedes the motion restrictions below. See [the current motion review](MOTION-REVIEW.md).
+
 Self-authored under the user's explicit creative delegation, followed by their selected Garden composition and content corrections. This revision replaces the initial tilted-photo/aperture homepage in the demo only.
 
 ## Current brief
