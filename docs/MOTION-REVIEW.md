@@ -38,6 +38,16 @@ The follow-up reference is [Nick Stepuk's panel-motion post](https://x.com/stfnc
 
 Follow-up browser checks in Chrome covered 1920×889, 1440×1000, 390×844 and 320×740. Observed actual perspective transforms, opposite image/caption movement, continued image scroll parallax, and return to a clean neutral state. Verified Pause clears panel styles, the hero contains zero registered panels, all 25 panels survive Chinese translation, setting navigation works, and project images still open and close their lightbox. Chinese panels stayed inside the viewport at 320px with motion paused. Checked desktop collection navigation and keyboard focus. No browser console errors. System reduced motion and coarse-pointer branches were reviewed in source; physical touch hardware and Safari were not tested.
 
+## Space-thumbnail restoration
+
+The next review restores visual browsing by space in the home settings section. The six categories keep their original order, bilingual names, counts and destinations. They now form a three-column desktop grid, two columns at tablet widths and one column on phones. Names and model counts sit below each photograph for readability.
+
+The selected resort pool photograph moves from the single feature image into the Poolside & Resort thumbnail. Existing catalogue images illustrate the other spaces. Terrace uses the existing curated lounge cover (KD-C034-01); Public & Municipal uses the park bench (KD-C129-06). Dining, shade and fire retain their original setting covers. No new imagery was generated. The separate settings page retains its existing presentation.
+
+All six home setting cards now receive the image-panel motion: spring-eased perspective, image/caption depth, light and shadows. Scroll reveals, Pause motion and reduced-motion behavior remain. The hero is unchanged. With the standalone pool panel absorbed into its category card, 24 home panels now use cursor motion.
+
+Verified in connected Chrome at 1920×889, 768×1024, 390×844 and 320×740: correct column counts, all six thumbnails loaded, English and Chinese labels/counts, no horizontal overflow, actual image/caption motion, and immediate reset when paused. Clicked all six cards and checked their destination titles and totals (74, 117, 82, 32, 10, 26). No browser errors. Updated the existing regression runner to locate the pool photograph in its card and require six thumbnail/motion targets; its headless suite was not run in this session. Syntax and static asset checks passed. Deployment continues exclusively through the existing GitHub Pages workflow.
+
 ## Asset provenance
 
 The selected `assets/images/demo/garden.webp`, original logo, catalogue photography, fonts and poolside setting photograph are retained. References informed motion and layout, without copying their imagery or source code.

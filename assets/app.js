@@ -1258,14 +1258,19 @@
     const el = byId(targetId);
     if (!el || el.dataset.filled) return;
     const sets = catalog.settings || [];
+    const isHome = targetId === "home-settings";
+    const spaceCovers = { "terrace-balcony": "KD-C034-01", "public-municipal": "KD-C129-06" };
     el.innerHTML = sets.map((s) => {
       const n = catalog.products.filter((p) => p.setting === s.slug).length;
-      // Lead image: first product of the feeding collection, so the tile is
-      // never empty and always shows real stock.
-      const lead = catalog.products.find((p) => p.setting === s.slug);
-      const v = lead ? atLeast(lead, 800) : null;
-      return `<button class="set-card reveal" type="button" data-open-setting="${s.slug}">
-        ${v ? `<img src="${v.src}" width="${v.w}" height="${v.h}" loading="lazy" decoding="async" alt="">` : ""}
+      // Keep the existing setting order and counts; home covers make the space
+      // recognizable, with the first matching catalogue image as a fallback.
+      const lead = (isHome && productById(spaceCovers[s.slug])) || catalog.products.find((p) => p.setting === s.slug);
+      const v = isHome && s.slug === "poolside-resort"
+        ? { src: "assets/images/projects/proj-resort-pool-960.webp", w: 960, h: 540 }
+        : lead ? atLeast(lead, 800) : null;
+      const thumbnail = v ? `<img src="${v.src}" width="${v.w}" height="${v.h}" loading="lazy" decoding="async" alt="">` : "";
+      return `<button class="set-card reveal" type="button" data-open-setting="${s.slug}"${isHome ? ' data-kr-reveal="image"' : ""}>
+        ${isHome ? `<span class="set-card-image" aria-hidden="true">${thumbnail}</span>` : thumbnail}
         <span class="set-card-body">
           <span class="set-card-name">${esc(s.name[state.lang])}</span>
           <span class="set-card-count">${esc(fmt("setCount", { n: n }))}</span>

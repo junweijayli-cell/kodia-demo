@@ -17,6 +17,7 @@
 }
 #screen-home [data-kr-panel="image"]>.frame,
 #screen-home [data-kr-panel="image"]>.kr-material-frame,
+#screen-home [data-kr-panel="image"]>.set-card-image,
 #screen-home [data-kr-panel="image"]>button {
   translate: 0 0 12px;
   box-shadow: var(--kr-panel-shadow-x, 0px) var(--kr-panel-shadow-y, 0px) 42px rgb(23 41 35 / var(--kr-panel-shadow-opacity, 0));
@@ -25,6 +26,7 @@
   box-shadow: var(--kr-panel-shadow-x, 0px) var(--kr-panel-shadow-y, 0px) 48px rgb(23 41 35 / var(--kr-panel-shadow-opacity, 0));
 }
 #screen-home [data-kr-panel="image"]>.frame img,
+#screen-home [data-kr-panel="image"]>.set-card-image img,
 #screen-home .kr-project-grid [data-kr-panel]>button img { transform: none; scale: 1.06; }
 #screen-home .kr-pool-frame[data-kr-panel] img { scale: 1.035; }
 #screen-home [data-kr-panel]>:is(h2,h3,p,figcaption,.cap,.sub,.coll-card-wide-foot,.set-card-body) {
@@ -32,11 +34,6 @@
 }
 #screen-home [data-kr-panel="text"]::before { inset: -12px; }
 #screen-home .kr-catalog-copy[data-kr-panel]::before { inset: 0; }
-#screen-home [data-kr-panel="row"]::before { background: linear-gradient(110deg, #a3b898, transparent 80%); }
-#screen-home [data-kr-panel="row"]::after {
-  translate: var(--kr-panel-content-x, 0px) var(--kr-panel-content-y, 0px) 30px;
-}
-#screen-home .kr-settings [data-kr-panel="row"]:hover { padding-left: 0; }
 /* Give the moving cards breathing room inside the horizontal viewport. */
 .kr-horizontal .kr-collection-window { padding-top: 32px; padding-bottom: 28px; margin-top: -24px; margin-bottom: -18px; }
 /* Keyboard readers get a stable face and the original focus indicator. */

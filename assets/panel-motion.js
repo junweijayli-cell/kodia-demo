@@ -9,16 +9,14 @@
   const panels = new WeakMap();
   const moving = new Set();
   const groups = [
-    ['.kr-collections .coll-card, .kr-material-grid>figure, .kr-project-grid>article', 'image'],
+    ['.kr-collections .coll-card, .kr-material-grid>figure, .kr-project-grid>article, #home-settings .set-card', 'image'],
     ['.kr-pool-frame, .kr-catalog-frame', 'scene'],
-    ['.kr-points>div, .kr-catalog-copy', 'text'],
-    ['#home-settings .set-card', 'row']
+    ['.kr-points>div, .kr-catalog-copy', 'text']
   ];
   const strength = {
     image: { tilt: 8, lift: 7, depth: 7 },
     scene: { tilt: 5, lift: 4, depth: 6 },
-    text: { tilt: 3, lift: 3, depth: 2.5 },
-    row: { tilt: 2, lift: 2, depth: 2 }
+    text: { tilt: 3, lift: 3, depth: 2.5 }
   };
   const properties = ['rx', 'ry', 'lift', 'image-x', 'image-y', 'content-x', 'content-y', 'light-x', 'light-y', 'light-opacity', 'shadow-x', 'shadow-y', 'shadow-opacity'];
   let hovered = null, frame = 0, lastTime = 0;
@@ -84,7 +82,7 @@
         'image-x': `${(-panel.x * s.depth).toFixed(3)}px`, 'image-y': `${(-panel.y * s.depth).toFixed(3)}px`,
         'content-x': `${(panel.x * s.depth * .6).toFixed(3)}px`, 'content-y': `${(panel.y * s.depth * .6).toFixed(3)}px`,
         'light-x': `${(50 + panel.x * 38).toFixed(2)}%`, 'light-y': `${(50 + panel.y * 38).toFixed(2)}%`,
-        'light-opacity': (a * (panel.type === 'text' || panel.type === 'row' ? .10 : .22)).toFixed(3),
+        'light-opacity': (a * (panel.type === 'text' ? .10 : .22)).toFixed(3),
         'shadow-x': `${(-panel.x * 12).toFixed(2)}px`, 'shadow-y': `${(a * 20 - panel.y * 6).toFixed(2)}px`,
         'shadow-opacity': (a * .15).toFixed(3)
       };
