@@ -20,10 +20,10 @@
 #screen-home [data-kr-panel="image"]>.set-card-image,
 #screen-home [data-kr-panel="image"]>button {
   translate: 0 0 12px;
-  box-shadow: var(--kr-panel-shadow-x, 0px) var(--kr-panel-shadow-y, 0px) 42px rgb(23 41 35 / var(--kr-panel-shadow-opacity, 0));
+  box-shadow: var(--kr-panel-shadow-x, 0px) var(--kr-panel-shadow-y, 0px) 42px rgb(18 34 79 / var(--kr-panel-shadow-opacity, 0));
 }
 #screen-home [data-kr-panel="scene"] {
-  box-shadow: var(--kr-panel-shadow-x, 0px) var(--kr-panel-shadow-y, 0px) 48px rgb(23 41 35 / var(--kr-panel-shadow-opacity, 0));
+  box-shadow: var(--kr-panel-shadow-x, 0px) var(--kr-panel-shadow-y, 0px) 48px rgb(18 34 79 / var(--kr-panel-shadow-opacity, 0));
 }
 #screen-home [data-kr-panel="image"]>.frame img,
 #screen-home [data-kr-panel="image"]>.set-card-image img,

@@ -10,7 +10,7 @@
   const moving = new Set();
   const groups = [
     ['.kr-collections .coll-card, .kr-material-grid>figure, .kr-project-grid>article, #home-settings .set-card', 'image'],
-    ['.kr-pool-frame, .kr-catalog-frame', 'scene'],
+    ['.kr-pool-frame, .kr-catalog-frame, .kr-facility-frame', 'scene'],
     ['.kr-points>div, .kr-catalog-copy', 'text']
   ];
   const strength = {

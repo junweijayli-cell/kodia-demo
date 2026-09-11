@@ -52,6 +52,7 @@
       capResortPool: "Resort pool deck · sun loungers and parasols",
       subHospitality: "Hospitality", subResidential: "Residential", subRestaurant: "Restaurant & café",
       altFactoryFloor: "KORDIA aluminium fabrication floor in Chancheng, Foshan",
+      altFactoryConcept: "AI visualisation of an outdoor furniture assembly and weaving workshop",
       altFactoryYard: "Finished teak loungers in the KORDIA factory yard",
       altFactoryTeak: "Solid teak chair frames on the KORDIA assembly floor",
       capTeakWorkshop: "Teak frame assembly · Chancheng, Foshan",
@@ -246,6 +247,7 @@
       capResortPool: "度假村泳池区 · 沙滩椅与遮阳伞",
       subHospitality: "酒店工程", subResidential: "住宅项目", subRestaurant: "餐饮空间",
       altFactoryFloor: "KORDIA 佛山禅城铝材加工车间",
+      altFactoryConcept: "户外家具组装与绳编车间的 AI 效果示意",
       altFactoryYard: "KORDIA 工厂堆场内的成品柚木躺椅",
       altFactoryTeak: "KORDIA 组装车间内的实心柚木椅架",
       capTeakWorkshop: "柚木椅架组装 · 广东佛山禅城",
@@ -653,8 +655,8 @@
   function applyStatic() {
     document.documentElement.lang = state.lang === "zh" ? "zh-CN" : "en";
     document.title = state.lang === "zh"
-      ? "KORDIA | 花园设计预览"
-      : "KORDIA | Garden review";
+      ? "KORDIA | 户外生活 · 海军蓝设计预览"
+      : "KORDIA | Outdoor living · Navy demo";
     document.querySelectorAll("[data-i18n]").forEach((n) => { n.textContent = t(n.dataset.i18n); });
     document.querySelectorAll("[data-i18n-html]").forEach((n) => { n.innerHTML = t(n.dataset.i18nHtml); });
     document.querySelectorAll("[data-i18n-placeholder]").forEach((n) => { n.placeholder = t(n.dataset.i18nPlaceholder); });

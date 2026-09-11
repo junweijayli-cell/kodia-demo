@@ -1,6 +1,6 @@
-# KORDIA · Garden review
+# KORDIA · Navy motion demo
 
-An independent review website using the selected Garden composition, the existing KORDIA homepage content, and layered, scroll-linked motion inspired by Fora and ERA Residence.
+An independent review website using the original KORDIA navy-and-cream palette, the selected Garden composition, and layered, scroll-linked motion inspired by Fora and ERA Residence.
 
 **Live demo:** https://junweijayli-cell.github.io/kodia-demo/
 
@@ -9,10 +9,11 @@ This repository is separate from the original KORDIA website. It has no producti
 ## Experience
 
 - The selected Garden image with a sky headline, independently moving furniture and foreground plants, gentle wind and a rotating scroll emblem.
-- A curved handoff into a scroll-linked horizontal journey through all six collections on roomy desktop viewports; smaller screens and reduced-motion visitors retain the full grid.
+- A curved navy handoff into an overall factory interior before the collections. The uncropped landscape image is a generated demo visualisation, labelled in English and Chinese. The Factory page uses the same view alongside its existing manufacturing content.
+- A scroll-linked horizontal journey through all six collections on roomy desktop viewports; smaller screens and reduced-motion visitors retain the full grid.
 - Masked heading entrances, alternating section reveals, image parallax, pointer-responsive cards and animated page entrances. Native scrolling, keyboard access and a persistent motion pause control.
-- Below the hero, 24 panels use spring-eased perspective, independently moving images and captions, reflected light and soft shadows. Text has gentler movement; touch and reduced-motion visitors get stable panels.
-- Original sequence: programme, Why KORDIA, materials, settings, projects, catalogue request and photo quotation.
+- Below the hero, 25 panels use spring-eased perspective, independently moving images and captions, reflected light and soft shadows. Text has gentler movement; touch and reduced-motion visitors get stable panels.
+- Homepage sequence: factory overview, programme, Why KORDIA, materials, settings, projects, catalogue request and photo quotation.
 - “Start from the space, not the product” restores six thumbnail cards organized by use: poolside, terrace, dining, shaded garden, fire and public spaces. Each shows its name and model count, with the selected poolside photograph on the Poolside card.
 - Original bilingual catalogue, filtering, product detail, saved selection and enquiry wizard.
 - Phone-specific composition, keyboard access, reduced-motion alternative and readable no-JavaScript home.
@@ -29,4 +30,4 @@ Open http://localhost:4500. No build or runtime dependencies are required.
 
 GitHub Pages serves the main branch at the repository root. All paths are relative so the site works under `/kodia-demo/`. Do not add the original site's CNAME.
 
-See [Motion review](docs/MOTION-REVIEW.md) for the current design and verification notes. [Garden review](docs/GARDEN-REVIEW.md), [BRIEF.md](BRIEF.md) and [VERIFICATION.md](VERIFICATION.md) retain the earlier exploration history. The source site's original content and image-rights documentation is preserved in [docs/ORIGINAL_README.md](docs/ORIGINAL_README.md).
+See [Navy and facilities update](docs/NAVY-FACILITIES.md) for the latest design, image provenance and verification notes, and [Motion review](docs/MOTION-REVIEW.md) for the retained motion system. [Garden review](docs/GARDEN-REVIEW.md), [BRIEF.md](BRIEF.md) and [VERIFICATION.md](VERIFICATION.md) retain the earlier exploration history. The source site's original content and image-rights documentation is preserved in [docs/ORIGINAL_README.md](docs/ORIGINAL_README.md).

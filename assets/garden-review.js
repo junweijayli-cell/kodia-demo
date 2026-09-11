@@ -74,7 +74,7 @@
       unsettled = Math.abs(target - heroProgress) > .0003 || Math.abs(pointerX - currentX) + Math.abs(pointerY - currentY) > .002;
     }
     const pr = programme.getBoundingClientRect();
-    const opening = ease((innerHeight - pr.top) / (innerHeight * .8));
+    const opening = ease((innerHeight - curve.parentElement.getBoundingClientRect().top) / (innerHeight * .8));
     curve.style.transform = `scaleY(${1 - opening * .96})`;
     if (railDistance) {
       const p = clamp((headerHeight - pr.top) / railDistance);
@@ -131,7 +131,7 @@
     headings.forEach(splitHeading);
     const groups = [
       ['.kr-section-heading>p, .kr-points>div, .kr-settings-copy>p, .kr-catalog-copy>p, .kr-inquiry p', 'up'],
-      ['.kr-material-grid figure, .kr-project-grid article', 'image'],
+      ['.kr-material-grid figure, .kr-project-grid article, .kr-facility-card', 'image'],
       ['.kr-settings-copy, .kr-catalog-copy', 'left'], ['.kr-pool-frame', 'right']
     ];
     groups.forEach(([selector, direction]) => home.querySelectorAll(selector).forEach(el => { el.dataset.krReveal = direction; }));
